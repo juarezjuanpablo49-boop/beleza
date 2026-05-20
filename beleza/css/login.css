@@ -1,0 +1,280 @@
+/* ============================================================
+   css/login.css — Estilos de la página de login
+   ============================================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold:    #C9A96E;
+  --gold-lt: #E8D5A3;
+  --dark:    #0D0D0D;
+  --dark2:   #1A1A1A;
+  --dark3:   #262626;
+  --accent:  #B5294E;
+  --text:    #F0EDE8;
+  --sub:     #8A8478;
+  --border:  #333;
+  --bg:      #F5F3EF;
+  --ink:     #1A1A1A;
+  --ink-sub: #666;
+  --ink-brd: #DDD8D0;
+  --radius:  10px;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ---- Split layout ---- */
+.split {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ---- Left decorative panel ---- */
+.split-left {
+  flex: 0 0 44%;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deco-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 48px;
+}
+
+.brand-mark {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 80px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  opacity: .15;
+  letter-spacing: -4px;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.brand-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.brand-line {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 16px;
+}
+
+.brand-tagline {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 36px;
+}
+
+.brand-quote {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(240, 237, 232, .4);
+  line-height: 1.8;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Decorative circles */
+.deco-circles { position: absolute; inset: 0; pointer-events: none; }
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 169, 110, .12);
+}
+.c1 { width: 500px; height: 500px; top: -180px; left: -180px; }
+.c2 { width: 320px; height: 320px; bottom: -80px; right: -100px; }
+.c3 { width: 160px; height: 160px; bottom: 30%; left: 20%;
+      border-color: rgba(201,169,110,.06); }
+
+/* ---- Right form panel ---- */
+.split-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  background: var(--bg);
+}
+
+.form-wrap { width: 100%; max-width: 400px; }
+
+.form-header { margin-bottom: 32px; }
+.form-header h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.form-header p { font-size: 14px; color: var(--ink-sub); }
+
+/* ---- Type toggle ---- */
+.type-toggle {
+  display: flex;
+  background: var(--ink-brd);
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: 24px;
+  position: relative;
+  gap: 3px;
+}
+
+.type-btn {
+  flex: 1;
+  padding: 9px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-sub);
+  border: none;
+  background: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color .2s;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  z-index: 1;
+  letter-spacing: .3px;
+}
+
+.type-btn.active { color: var(--ink); font-weight: 500; }
+
+.type-slider {
+  position: absolute;
+  top: 3px; bottom: 3px;
+  width: calc(50% - 4.5px);
+  background: white;
+  border-radius: 5px;
+  transition: transform .25s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,.1);
+  left: 3px;
+}
+
+.type-slider.right { transform: translateX(calc(100% + 3px)); }
+
+/* ---- Alert ---- */
+.alert-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFF0F0;
+  border: 1px solid #FFCDD2;
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 13px;
+  color: #B71C1C;
+  margin-bottom: 20px;
+}
+.alert-icon {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #B71C1C;
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+
+/* ---- Fields ---- */
+.field { margin-bottom: 18px; }
+.field label {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-sub);
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.field input {
+  width: 100%;
+  border: 1px solid var(--ink-brd);
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  color: var(--ink);
+  background: white;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.field input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,169,110,.12);
+}
+.field input::placeholder { color: #C0BAB0; }
+
+.pass-wrap { position: relative; }
+.pass-wrap input { padding-right: 44px; }
+.eye-btn {
+  position: absolute; right: 12px; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none;
+  color: var(--ink-sub); cursor: pointer; padding: 4px;
+}
+.eye-btn:hover { color: var(--ink); }
+
+/* ---- Submit ---- */
+.btn-submit {
+  width: 100%;
+  background: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+  margin-top: 8px;
+  letter-spacing: .5px;
+}
+.btn-submit:hover { background: var(--dark3); }
+.btn-submit:active { transform: scale(.99); }
+.btn-submit.admin-mode { background: var(--accent); }
+.btn-submit.admin-mode:hover { background: #8B1C3A; }
+
+/* ---- Footer ---- */
+.form-footer {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 13px;
+  color: var(--ink-sub);
+}
+.form-footer a { color: var(--accent); text-decoration: none; }
+.form-footer a:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 720px) {
+  .split-left { display: none; }
+  .split-right { padding: 32px 20px; }
+}
